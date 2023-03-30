@@ -1,12 +1,12 @@
-import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
+import * as React from 'react';
+import { RootState, useAppStore } from '../store';
 import { decrement, increment } from '../store/slices/counter';
 
 const IndexPage: React.FC<PageProps> = () => {
-  const {counter} = useSelector((state: RootState) => state.counter)
-  const dispatch = useDispatch()
+  const { useAppDispatch, useAppSelector } = useAppStore();
+  const { counter } = useAppSelector((state: RootState) => state.counter);
+  const dispatch = useAppDispatch();
   return (
     <main>
       <div>
